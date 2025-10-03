@@ -1,0 +1,35 @@
+# Temple Crowd Prediction System Configuration
+
+# Prophet Model Configuration
+prophet:
+  seasonality_mode: 'multiplicative'
+  daily_seasonality: true
+  weekly_seasonality: true
+  yearly_seasonality: true
+  changepoint_prior_scale: 0.05
+  seasonality_prior_scale: 10.0
+
+# Data Processing Configuration
+data_processing:
+  min_data_points: 720  # Minimum 30 days of hourly data
+  outlier_threshold: 3.0  # Standard deviations for outlier detection
+  missing_value_strategy: 'interpolate'  # 'interpolate', 'forward_fill', 'mean'
+
+# Visualization Configuration
+visualization:
+  figure_size: [15, 8]
+  dpi: 300
+  chart_style: 'seaborn-v0_8'
+  confidence_interval_alpha: 0.3
+
+# Export Configuration
+export:
+  json_indent: 2
+  datetime_format: '%Y-%m-%d %H:%M:%S'
+  include_confidence_intervals: true
+
+# Logging Configuration
+logging:
+  level: 'INFO'
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  file: 'temple_crowd_prediction.log'
