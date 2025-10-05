@@ -1,0 +1,5 @@
+# Temple Crowd Dashboard Dependencies
+streamlit>=1.28.0
+python-dateutil>=2.8.2
+
+# Note: datetime and random are built-in Python modules and don't need to be installed
