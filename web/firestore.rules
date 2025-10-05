@@ -1,0 +1,126 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions for authentication and validation
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    function isValidBookingStatus(status) {
+      return status in ['confirmed', 'cancelled', 'completed'];
+    }
+    
+    function isValidBookingData(data) {
+      return data.keys().hasAll(['userId', 'slotTime', 'status']) &&
+             data.userId is string &&
+             data.slotTime is timestamp &&
+             isValidBookingStatus(data.status) &&
+             data.userId == request.auth.uid;
+    }
+    
+    function isValidTimeSlotData(data) {
+      return data.keys().hasAll(['date', 'time', 'capacity', 'booked', 'available']) &&
+             data.date is timestamp &&
+             data.time is string &&
+             data.capacity is number &&
+             data.booked is number &&
+             data.available is bool &&
+             data.capacity >= 0 &&
+             data.booked >= 0 &&
+             data.booked <= data.capacity;
+    }
+    
+    function isBookingInFuture(slotTime) {
+      return slotTime > request.time;
+    }
+    
+    function isBookingWithinAdvanceLimit(slotTime) {
+      // Allow bookings up to 30 days in advance
+      let maxAdvanceTime = request.time + duration.value(30, 'd');
+      return slotTime <= maxAdvanceTime;
+    }
+    
+    function isBookingWithinMinAdvance(slotTime) {
+      // Require at least 2 hours advance booking
+      let minAdvanceTime = request.time + duration.value(2, 'h');
+      return slotTime >= minAdvanceTime;
+    }
+    
+    // Bookings collection rules
+    match /bookings/{bookingId} {
+      // Allow users to read their own bookings
+      allow read: if isAuthenticated() && 
+                     resource.data.userId == request.auth.uid;
+      
+      // Allow users to create their own bookings with validation
+      allow create: if isAuthenticated() && 
+                       isValidBookingData(resource.data) &&
+                       isBookingInFuture(resource.data.slotTime) &&
+                       isBookingWithinAdvanceLimit(resource.data.slotTime) &&
+                       isBookingWithinMinAdvance(resource.data.slotTime);
+      
+      // Allow users to update their own bookings (limited fields)
+      allow update: if isAuthenticated() && 
+                       resource.data.userId == request.auth.uid &&
+                       // Only allow status updates
+                       request.resource.data.diff(resource.data).affectedKeys()
+                         .hasOnly(['status', 'updatedAt']) &&
+                       // Only allow cancellation
+                       (request.resource.data.status == 'cancelled' && 
+                        resource.data.status == 'confirmed');
+      
+      // Prevent deletion of bookings (for audit trail)
+      allow delete: if false;
+    }
+    
+    // Time slots collection rules
+    match /timeSlots/{slotId} {
+      // Allow all authenticated users to read time slots
+      allow read: if isAuthenticated();
+      
+      // Only allow system/admin to create time slots
+      // In production, this would be restricted to admin users or server-side operations
+      allow create: if isAuthenticated() && 
+                       isValidTimeSlotData(resource.data);
+      
+      // Allow updating booked count and availability when creating bookings
+      // This would typically be done through Cloud Functions or server-side logic
+      allow update: if isAuthenticated() && 
+                       // Only allow updates to booked count and availability
+                       request.resource.data.diff(resource.data).affectedKeys()
+                         .hasOnly(['booked', 'available', 'updatedAt']) &&
+                       // Ensure booked count doesn't exceed capacity
+                       request.resource.data.booked <= request.resource.data.capacity &&
+                       // Ensure booked count doesn't decrease (prevent overbooking)
+                       request.resource.data.booked >= resource.data.booked;
+      
+      // Prevent deletion of time slots
+      allow delete: if false;
+    }
+    
+    // Query rules for collections
+    
+    // Allow users to query their own bookings
+    match /bookings/{document=**} {
+      allow list: if isAuthenticated() && 
+                     // Ensure query filters by the authenticated user's ID
+                     resource.data.userId == request.auth.uid;
+    }
+    
+    // Allow querying time slots with date filters
+    match /timeSlots/{document=**} {
+      allow list: if isAuthenticated();
+    }
+    
+    // Default deny rule for all other documents
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
