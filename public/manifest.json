@@ -1,0 +1,64 @@
+{
+  "name": "ShraddhaSecure - Temple Darshan Management",
+  "short_name": "ShraddhaSecure",
+  "description": "Manage temple visits with live crowd information and darshan slot booking",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f97316",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["lifestyle", "travel"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Book Darshan",
+      "short_name": "Book",
+      "description": "Book a darshan slot",
+      "url": "/darshan",
+      "icons": [
+        {
+          "src": "/icon.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "My Bookings",
+      "short_name": "Bookings",
+      "description": "View your bookings",
+      "url": "/darshan/my-bookings",
+      "icons": [
+        {
+          "src": "/icon.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Live Map",
+      "short_name": "Map",
+      "description": "View live crowd heatmap",
+      "url": "/heatmap",
+      "icons": [
+        {
+          "src": "/icon.svg",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

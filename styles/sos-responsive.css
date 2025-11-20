@@ -1,0 +1,210 @@
+/**
+ * SOS System Responsive Design Utilities
+ * 
+ * Mobile-first responsive styles for the SOS emergency alert system.
+ * Ensures optimal touch interactions and accessibility across all screen sizes.
+ * 
+ * Requirements: 1.1, 1.4
+ */
+
+/* Touch Optimization */
+.sos-touch-target {
+  /* Minimum touch target size for mobile devices */
+  min-width: 48px;
+  min-height: 48px;
+  
+  /* Optimize for touch interactions */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Mobile-First Button Sizing */
+.sos-button-mobile {
+  /* Mobile: 72x72px */
+  min-width: 72px;
+  min-height: 72px;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+}
+
+@media (min-width: 640px) {
+  .sos-button-mobile {
+    /* Tablet: 80x80px */
+    min-width: 80px;
+    min-height: 80px;
+    padding: 1.5rem 2rem;
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .sos-button-mobile {
+    /* Desktop: 96x96px */
+    min-width: 96px;
+    min-height: 96px;
+    padding: 2rem 2.5rem;
+    font-size: 1.25rem;
+  }
+}
+
+/* Responsive Grid Layouts */
+.sos-grid-mobile {
+  /* Mobile: 1 column for better touch targets */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .sos-grid-mobile {
+    /* Tablet: 2 columns */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sos-grid-mobile {
+    /* Desktop: 3 columns */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* Urgency Level Grid */
+.sos-urgency-grid {
+  /* Mobile: 2 columns for compact layout */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .sos-urgency-grid {
+    /* Desktop: 4 columns for horizontal layout */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* Responsive Spacing */
+.sos-spacing-mobile {
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .sos-spacing-mobile {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .sos-spacing-mobile {
+    padding: 2rem;
+  }
+}
+
+/* Responsive Typography */
+.sos-heading-mobile {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@media (min-width: 640px) {
+  .sos-heading-mobile {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .sos-heading-mobile {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+/* Floating Button Safe Area */
+.sos-floating-button {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 50;
+}
+
+@media (min-width: 640px) {
+  .sos-floating-button {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+}
+
+/* Support for iOS safe area insets */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .sos-floating-button {
+    bottom: calc(1rem + env(safe-area-inset-bottom));
+    right: calc(1rem + env(safe-area-inset-right));
+  }
+  
+  @media (min-width: 640px) {
+    .sos-floating-button {
+      bottom: calc(1.5rem + env(safe-area-inset-bottom));
+      right: calc(1.5rem + env(safe-area-inset-right));
+    }
+  }
+}
+
+/* Bottom Sheet Optimization */
+.sos-bottom-sheet {
+  max-height: 90vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent zoom on input focus (iOS) */
+.sos-input-mobile {
+  font-size: 16px;
+}
+
+/* Landscape Mode Adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+  .sos-button-mobile {
+    min-width: 64px;
+    min-height: 64px;
+    padding: 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .sos-heading-mobile {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  
+  .sos-bottom-sheet {
+    max-height: 85vh;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .sos-button-mobile,
+  .sos-touch-target {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .sos-button-mobile,
+  .sos-touch-target {
+    transition: none;
+    animation: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .sos-floating-button {
+    display: none;
+  }
+}

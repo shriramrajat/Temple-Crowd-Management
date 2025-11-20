@@ -1,0 +1,134 @@
+/**
+ * Accessibility Styles for Command Center Dashboard
+ * 
+ * Custom styles for focus indicators, animations, and screen reader support
+ */
+
+/* Custom animations for warnings */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes flash {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-flash {
+  animation: flash 2s ease-in-out infinite;
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 3s ease infinite;
+}
+
+/* Enhanced focus indicators for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip to main content link for screen readers */
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 1rem;
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  text-decoration: none;
+  border-radius: 0.25rem;
+}
+
+.skip-to-main:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .animate-pulse,
+  .animate-pulse-slow,
+  .animate-flash,
+  .animate-gradient-x,
+  .animate-spin {
+    animation: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  *:focus-visible {
+    outline-width: 3px;
+    outline-offset: 3px;
+  }
+  
+  button,
+  a,
+  [role="button"] {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Focus within for container elements */
+.focus-within\:ring-2:focus-within {
+  box-shadow: 0 0 0 2px hsl(var(--primary));
+}
+
+/* Keyboard navigation helpers */
+[tabindex="0"]:focus,
+[tabindex="-1"]:focus {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Ensure interactive SVG elements are keyboard accessible */
+svg [role="button"]:focus {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
