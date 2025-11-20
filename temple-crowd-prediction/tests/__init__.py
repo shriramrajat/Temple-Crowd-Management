@@ -1,1 +1,0 @@
-# Integration tests for temple crowd prediction system
