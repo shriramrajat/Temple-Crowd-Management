@@ -1,183 +1,107 @@
 {
-  "name": "prisma-client-6d566c764f3280d1b2e8f998b9e24f2833daa994851cbe6b14c4a8abf51f6d75",
-  "main": "index.js",
-  "types": "index.d.ts",
-  "browser": "default.js",
-  "exports": {
-    "./client": {
-      "require": {
-        "node": "./index.js",
-        "edge-light": "./wasm.js",
-        "workerd": "./wasm.js",
-        "worker": "./wasm.js",
-        "browser": "./index-browser.js",
-        "default": "./index.js"
-      },
-      "import": {
-        "node": "./index.js",
-        "edge-light": "./wasm.js",
-        "workerd": "./wasm.js",
-        "worker": "./wasm.js",
-        "browser": "./index-browser.js",
-        "default": "./index.js"
-      },
-      "default": "./index.js"
-    },
-    "./package.json": "./package.json",
-    ".": {
-      "require": {
-        "node": "./index.js",
-        "edge-light": "./wasm.js",
-        "workerd": "./wasm.js",
-        "worker": "./wasm.js",
-        "browser": "./index-browser.js",
-        "default": "./index.js"
-      },
-      "import": {
-        "node": "./index.js",
-        "edge-light": "./wasm.js",
-        "workerd": "./wasm.js",
-        "worker": "./wasm.js",
-        "browser": "./index-browser.js",
-        "default": "./index.js"
-      },
-      "default": "./index.js"
-    },
-    "./edge": {
-      "types": "./edge.d.ts",
-      "require": "./edge.js",
-      "import": "./edge.js",
-      "default": "./edge.js"
-    },
-    "./react-native": {
-      "types": "./react-native.d.ts",
-      "require": "./react-native.js",
-      "import": "./react-native.js",
-      "default": "./react-native.js"
-    },
-    "./extension": {
-      "types": "./extension.d.ts",
-      "require": "./extension.js",
-      "import": "./extension.js",
-      "default": "./extension.js"
-    },
-    "./index-browser": {
-      "types": "./index.d.ts",
-      "require": "./index-browser.js",
-      "import": "./index-browser.js",
-      "default": "./index-browser.js"
-    },
-    "./index": {
-      "types": "./index.d.ts",
-      "require": "./index.js",
-      "import": "./index.js",
-      "default": "./index.js"
-    },
-    "./wasm": {
-      "types": "./wasm.d.ts",
-      "require": "./wasm.js",
-      "import": "./wasm.mjs",
-      "default": "./wasm.mjs"
-    },
-    "./runtime/client": {
-      "types": "./runtime/client.d.ts",
-      "node": {
-        "require": "./runtime/client.js",
-        "default": "./runtime/client.js"
-      },
-      "require": "./runtime/client.js",
-      "import": "./runtime/client.mjs",
-      "default": "./runtime/client.mjs"
-    },
-    "./runtime/library": {
-      "types": "./runtime/library.d.ts",
-      "require": "./runtime/library.js",
-      "import": "./runtime/library.mjs",
-      "default": "./runtime/library.mjs"
-    },
-    "./runtime/binary": {
-      "types": "./runtime/binary.d.ts",
-      "require": "./runtime/binary.js",
-      "import": "./runtime/binary.mjs",
-      "default": "./runtime/binary.mjs"
-    },
-    "./runtime/wasm-engine-edge": {
-      "types": "./runtime/wasm-engine-edge.d.ts",
-      "require": "./runtime/wasm-engine-edge.js",
-      "import": "./runtime/wasm-engine-edge.mjs",
-      "default": "./runtime/wasm-engine-edge.mjs"
-    },
-    "./runtime/wasm-compiler-edge": {
-      "types": "./runtime/wasm-compiler-edge.d.ts",
-      "require": "./runtime/wasm-compiler-edge.js",
-      "import": "./runtime/wasm-compiler-edge.mjs",
-      "default": "./runtime/wasm-compiler-edge.mjs"
-    },
-    "./runtime/edge": {
-      "types": "./runtime/edge.d.ts",
-      "require": "./runtime/edge.js",
-      "import": "./runtime/edge-esm.js",
-      "default": "./runtime/edge-esm.js"
-    },
-    "./runtime/react-native": {
-      "types": "./runtime/react-native.d.ts",
-      "require": "./runtime/react-native.js",
-      "import": "./runtime/react-native.js",
-      "default": "./runtime/react-native.js"
-    },
-    "./runtime/index-browser": {
-      "types": "./runtime/index-browser.d.ts",
-      "require": "./runtime/index-browser.js",
-      "import": "./runtime/index-browser.mjs",
-      "default": "./runtime/index-browser.mjs"
-    },
-    "./generator-build": {
-      "require": "./generator-build/index.js",
-      "import": "./generator-build/index.js",
-      "default": "./generator-build/index.js"
-    },
-    "./sql": {
-      "require": {
-        "types": "./sql.d.ts",
-        "node": "./sql.js",
-        "default": "./sql.js"
-      },
-      "import": {
-        "types": "./sql.d.ts",
-        "node": "./sql.mjs",
-        "default": "./sql.mjs"
-      },
-      "default": "./sql.js"
-    },
-    "./*": "./*"
+  "name": "my-v0-project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate deploy",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:studio": "prisma studio",
+    "db:cleanup": "tsx scripts/cleanup-database.ts",
+    "setup:env": "node scripts/setup-env.js",
+    "generate:secrets": "node scripts/generate-secrets.js",
+    "check:deployment": "node scripts/check-deployment-readiness.js",
+    "test:deployment": "node scripts/test-deployment.js",
+    "check:system": "node scripts/system-check.js",
+    "analyze:bundle": "node scripts/analyze-bundle.js",
+    "postinstall": "prisma generate",
+    "vercel-build": "prisma generate && prisma migrate deploy && next build"
   },
-  "version": "6.19.0",
-  "sideEffects": false,
-  "imports": {
-    "#wasm-engine-loader": {
-      "edge-light": "./wasm-edge-light-loader.mjs",
-      "workerd": "./wasm-worker-loader.mjs",
-      "worker": "./wasm-worker-loader.mjs",
-      "default": "./wasm-worker-loader.mjs"
-    },
-    "#main-entry-point": {
-      "require": {
-        "node": "./index.js",
-        "edge-light": "./wasm.js",
-        "workerd": "./wasm.js",
-        "worker": "./wasm.js",
-        "browser": "./index-browser.js",
-        "default": "./index.js"
-      },
-      "import": {
-        "node": "./index.js",
-        "edge-light": "./wasm.js",
-        "workerd": "./wasm.js",
-        "worker": "./wasm.js",
-        "browser": "./index-browser.js",
-        "default": "./index.js"
-      },
-      "default": "./index.js"
-    }
+  "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "@prisma/client": "^6.19.0",
+    "@radix-ui/react-accordion": "1.2.2",
+    "@radix-ui/react-alert-dialog": "1.1.4",
+    "@radix-ui/react-aspect-ratio": "1.1.1",
+    "@radix-ui/react-avatar": "1.1.2",
+    "@radix-ui/react-checkbox": "1.1.3",
+    "@radix-ui/react-collapsible": "1.1.2",
+    "@radix-ui/react-context-menu": "2.2.4",
+    "@radix-ui/react-dialog": "1.1.4",
+    "@radix-ui/react-dropdown-menu": "2.1.4",
+    "@radix-ui/react-hover-card": "1.1.4",
+    "@radix-ui/react-label": "2.1.1",
+    "@radix-ui/react-menubar": "1.1.4",
+    "@radix-ui/react-navigation-menu": "1.2.3",
+    "@radix-ui/react-popover": "1.1.4",
+    "@radix-ui/react-progress": "1.1.1",
+    "@radix-ui/react-radio-group": "1.2.2",
+    "@radix-ui/react-scroll-area": "1.2.2",
+    "@radix-ui/react-select": "2.1.4",
+    "@radix-ui/react-separator": "1.1.1",
+    "@radix-ui/react-slider": "1.2.2",
+    "@radix-ui/react-slot": "1.1.1",
+    "@radix-ui/react-switch": "1.1.2",
+    "@radix-ui/react-tabs": "1.1.2",
+    "@radix-ui/react-toast": "1.2.4",
+    "@radix-ui/react-toggle": "1.1.1",
+    "@radix-ui/react-toggle-group": "1.1.1",
+    "@radix-ui/react-tooltip": "1.1.6",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/qrcode": "^1.5.6",
+    "@vercel/analytics": "latest",
+    "autoprefixer": "^10.4.20",
+    "bcryptjs": "^3.0.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cmdk": "1.0.4",
+    "date-fns": "4.1.0",
+    "dotenv": "^17.2.3",
+    "embla-carousel-react": "8.5.1",
+    "html5-qrcode": "^2.3.8",
+    "input-otp": "1.4.1",
+    "lucide-react": "^0.454.0",
+    "next": "16.0.3",
+    "next-auth": "^5.0.0-beta.30",
+    "next-themes": "^0.4.6",
+    "prisma": "^6.19.0",
+    "qrcode": "^1.5.4",
+    "react": "19.2.0",
+    "react-day-picker": "9.8.0",
+    "react-dom": "19.2.0",
+    "react-hook-form": "^7.60.0",
+    "react-resizable-panels": "^2.1.7",
+    "recharts": "latest",
+    "resend": "^6.4.2",
+    "server-only": "^0.0.1",
+    "sonner": "^1.7.4",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7",
+    "vaul": "^0.9.9",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.9",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^5.1.1",
+    "axe-core": "^4.11.0",
+    "jsdom": "^27.2.0",
+    "postcss": "^8.5",
+    "tailwindcss": "^4.1.9",
+    "tsx": "^4.20.6",
+    "tw-animate-css": "1.3.3",
+    "typescript": "^5",
+    "vitest": "^4.0.9",
+    "vitest-axe": "^0.1.0"
   }
 }

@@ -167,9 +167,16 @@ model users {
   pinCode               String?                 @db.VarChar(10)
   placeId               String?                 @db.VarChar(255)
   state                 String?                 @db.VarChar(100)
+  role                  UserRole                @default(PILGRIM)
   password_reset_tokens password_reset_tokens[]
   sos_alerts            sos_alerts[]
   user_bookings         user_bookings[]
 
   @@index([email])
+  @@index([role])
+}
+
+enum UserRole {
+  PILGRIM
+  ADMIN
 }

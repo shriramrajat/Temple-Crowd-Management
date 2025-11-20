@@ -65,6 +65,23 @@ export type user_bookings = $Result.DefaultSelection<Prisma.$user_bookingsPayloa
 export type users = $Result.DefaultSelection<Prisma.$usersPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const UserRole: {
+  PILGRIM: 'PILGRIM',
+  ADMIN: 'ADMIN'
+};
+
+export type UserRole = (typeof UserRole)[keyof typeof UserRole]
+
+}
+
+export type UserRole = $Enums.UserRole
+
+export const UserRole: typeof $Enums.UserRole
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -11869,6 +11886,7 @@ export namespace Prisma {
     pinCode: string | null
     placeId: string | null
     state: string | null
+    role: $Enums.UserRole | null
   }
 
   export type UsersMaxAggregateOutputType = {
@@ -11891,6 +11909,7 @@ export namespace Prisma {
     pinCode: string | null
     placeId: string | null
     state: string | null
+    role: $Enums.UserRole | null
   }
 
   export type UsersCountAggregateOutputType = {
@@ -11913,6 +11932,7 @@ export namespace Prisma {
     pinCode: number
     placeId: number
     state: number
+    role: number
     _all: number
   }
 
@@ -11949,6 +11969,7 @@ export namespace Prisma {
     pinCode?: true
     placeId?: true
     state?: true
+    role?: true
   }
 
   export type UsersMaxAggregateInputType = {
@@ -11971,6 +11992,7 @@ export namespace Prisma {
     pinCode?: true
     placeId?: true
     state?: true
+    role?: true
   }
 
   export type UsersCountAggregateInputType = {
@@ -11993,6 +12015,7 @@ export namespace Prisma {
     pinCode?: true
     placeId?: true
     state?: true
+    role?: true
     _all?: true
   }
 
@@ -12102,6 +12125,7 @@ export namespace Prisma {
     pinCode: string | null
     placeId: string | null
     state: string | null
+    role: $Enums.UserRole
     _count: UsersCountAggregateOutputType | null
     _avg: UsersAvgAggregateOutputType | null
     _sum: UsersSumAggregateOutputType | null
@@ -12143,6 +12167,7 @@ export namespace Prisma {
     pinCode?: boolean
     placeId?: boolean
     state?: boolean
+    role?: boolean
     password_reset_tokens?: boolean | users$password_reset_tokensArgs<ExtArgs>
     sos_alerts?: boolean | users$sos_alertsArgs<ExtArgs>
     user_bookings?: boolean | users$user_bookingsArgs<ExtArgs>
@@ -12169,6 +12194,7 @@ export namespace Prisma {
     pinCode?: boolean
     placeId?: boolean
     state?: boolean
+    role?: boolean
   }, ExtArgs["result"]["users"]>
 
   export type usersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -12191,6 +12217,7 @@ export namespace Prisma {
     pinCode?: boolean
     placeId?: boolean
     state?: boolean
+    role?: boolean
   }, ExtArgs["result"]["users"]>
 
   export type usersSelectScalar = {
@@ -12213,9 +12240,10 @@ export namespace Prisma {
     pinCode?: boolean
     placeId?: boolean
     state?: boolean
+    role?: boolean
   }
 
-  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "passwordHash" | "name" | "phone" | "createdAt" | "updatedAt" | "lastLoginAt" | "failedLoginCount" | "lockedUntil" | "address" | "city" | "country" | "formattedAddress" | "latitude" | "longitude" | "pinCode" | "placeId" | "state", ExtArgs["result"]["users"]>
+  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "passwordHash" | "name" | "phone" | "createdAt" | "updatedAt" | "lastLoginAt" | "failedLoginCount" | "lockedUntil" | "address" | "city" | "country" | "formattedAddress" | "latitude" | "longitude" | "pinCode" | "placeId" | "state" | "role", ExtArgs["result"]["users"]>
   export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     password_reset_tokens?: boolean | users$password_reset_tokensArgs<ExtArgs>
     sos_alerts?: boolean | users$sos_alertsArgs<ExtArgs>
@@ -12252,6 +12280,7 @@ export namespace Prisma {
       pinCode: string | null
       placeId: string | null
       state: string | null
+      role: $Enums.UserRole
     }, ExtArgs["result"]["users"]>
     composites: {}
   }
@@ -12697,6 +12726,7 @@ export namespace Prisma {
     readonly pinCode: FieldRef<"users", 'String'>
     readonly placeId: FieldRef<"users", 'String'>
     readonly state: FieldRef<"users", 'String'>
+    readonly role: FieldRef<"users", 'UserRole'>
   }
     
 
@@ -13341,7 +13371,8 @@ export namespace Prisma {
     longitude: 'longitude',
     pinCode: 'pinCode',
     placeId: 'placeId',
-    state: 'state'
+    state: 'state',
+    role: 'role'
   };
 
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
@@ -13436,6 +13467,20 @@ export namespace Prisma {
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'UserRole'
+   */
+  export type EnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole'>
+    
+
+
+  /**
+   * Reference to a field of type 'UserRole[]'
+   */
+  export type ListEnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole[]'>
     
   /**
    * Deep Input Types
@@ -14139,6 +14184,7 @@ export namespace Prisma {
     pinCode?: StringNullableFilter<"users"> | string | null
     placeId?: StringNullableFilter<"users"> | string | null
     state?: StringNullableFilter<"users"> | string | null
+    role?: EnumUserRoleFilter<"users"> | $Enums.UserRole
     password_reset_tokens?: Password_reset_tokensListRelationFilter
     sos_alerts?: Sos_alertsListRelationFilter
     user_bookings?: User_bookingsListRelationFilter
@@ -14164,6 +14210,7 @@ export namespace Prisma {
     pinCode?: SortOrderInput | SortOrder
     placeId?: SortOrderInput | SortOrder
     state?: SortOrderInput | SortOrder
+    role?: SortOrder
     password_reset_tokens?: password_reset_tokensOrderByRelationAggregateInput
     sos_alerts?: sos_alertsOrderByRelationAggregateInput
     user_bookings?: user_bookingsOrderByRelationAggregateInput
@@ -14192,6 +14239,7 @@ export namespace Prisma {
     pinCode?: StringNullableFilter<"users"> | string | null
     placeId?: StringNullableFilter<"users"> | string | null
     state?: StringNullableFilter<"users"> | string | null
+    role?: EnumUserRoleFilter<"users"> | $Enums.UserRole
     password_reset_tokens?: Password_reset_tokensListRelationFilter
     sos_alerts?: Sos_alertsListRelationFilter
     user_bookings?: User_bookingsListRelationFilter
@@ -14217,6 +14265,7 @@ export namespace Prisma {
     pinCode?: SortOrderInput | SortOrder
     placeId?: SortOrderInput | SortOrder
     state?: SortOrderInput | SortOrder
+    role?: SortOrder
     _count?: usersCountOrderByAggregateInput
     _avg?: usersAvgOrderByAggregateInput
     _max?: usersMaxOrderByAggregateInput
@@ -14247,6 +14296,7 @@ export namespace Prisma {
     pinCode?: StringNullableWithAggregatesFilter<"users"> | string | null
     placeId?: StringNullableWithAggregatesFilter<"users"> | string | null
     state?: StringNullableWithAggregatesFilter<"users"> | string | null
+    role?: EnumUserRoleWithAggregatesFilter<"users"> | $Enums.UserRole
   }
 
   export type admin_usersCreateInput = {
@@ -15014,6 +15064,7 @@ export namespace Prisma {
     pinCode?: string | null
     placeId?: string | null
     state?: string | null
+    role?: $Enums.UserRole
     password_reset_tokens?: password_reset_tokensCreateNestedManyWithoutUsersInput
     sos_alerts?: sos_alertsCreateNestedManyWithoutUsersInput
     user_bookings?: user_bookingsCreateNestedManyWithoutUsersInput
@@ -15039,6 +15090,7 @@ export namespace Prisma {
     pinCode?: string | null
     placeId?: string | null
     state?: string | null
+    role?: $Enums.UserRole
     password_reset_tokens?: password_reset_tokensUncheckedCreateNestedManyWithoutUsersInput
     sos_alerts?: sos_alertsUncheckedCreateNestedManyWithoutUsersInput
     user_bookings?: user_bookingsUncheckedCreateNestedManyWithoutUsersInput
@@ -15064,6 +15116,7 @@ export namespace Prisma {
     pinCode?: NullableStringFieldUpdateOperationsInput | string | null
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password_reset_tokens?: password_reset_tokensUpdateManyWithoutUsersNestedInput
     sos_alerts?: sos_alertsUpdateManyWithoutUsersNestedInput
     user_bookings?: user_bookingsUpdateManyWithoutUsersNestedInput
@@ -15089,6 +15142,7 @@ export namespace Prisma {
     pinCode?: NullableStringFieldUpdateOperationsInput | string | null
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password_reset_tokens?: password_reset_tokensUncheckedUpdateManyWithoutUsersNestedInput
     sos_alerts?: sos_alertsUncheckedUpdateManyWithoutUsersNestedInput
     user_bookings?: user_bookingsUncheckedUpdateManyWithoutUsersNestedInput
@@ -15114,6 +15168,7 @@ export namespace Prisma {
     pinCode?: string | null
     placeId?: string | null
     state?: string | null
+    role?: $Enums.UserRole
   }
 
   export type usersUpdateManyMutationInput = {
@@ -15136,6 +15191,7 @@ export namespace Prisma {
     pinCode?: NullableStringFieldUpdateOperationsInput | string | null
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   }
 
   export type usersUncheckedUpdateManyInput = {
@@ -15158,6 +15214,7 @@ export namespace Prisma {
     pinCode?: NullableStringFieldUpdateOperationsInput | string | null
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -15810,6 +15867,13 @@ export namespace Prisma {
     numberOfPeople?: SortOrder
   }
 
+  export type EnumUserRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
+  }
+
   export type Password_reset_tokensListRelationFilter = {
     every?: password_reset_tokensWhereInput
     some?: password_reset_tokensWhereInput
@@ -15850,6 +15914,7 @@ export namespace Prisma {
     pinCode?: SortOrder
     placeId?: SortOrder
     state?: SortOrder
+    role?: SortOrder
   }
 
   export type usersAvgOrderByAggregateInput = {
@@ -15878,6 +15943,7 @@ export namespace Prisma {
     pinCode?: SortOrder
     placeId?: SortOrder
     state?: SortOrder
+    role?: SortOrder
   }
 
   export type usersMinOrderByAggregateInput = {
@@ -15900,12 +15966,23 @@ export namespace Prisma {
     pinCode?: SortOrder
     placeId?: SortOrder
     state?: SortOrder
+    role?: SortOrder
   }
 
   export type usersSumOrderByAggregateInput = {
     failedLoginCount?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
+  }
+
+  export type EnumUserRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleWithAggregatesFilter<$PrismaModel> | $Enums.UserRole
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserRoleFilter<$PrismaModel>
+    _max?: NestedEnumUserRoleFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -16148,6 +16225,10 @@ export namespace Prisma {
     connectOrCreate?: user_bookingsCreateOrConnectWithoutUsersInput | user_bookingsCreateOrConnectWithoutUsersInput[]
     createMany?: user_bookingsCreateManyUsersInputEnvelope
     connect?: user_bookingsWhereUniqueInput | user_bookingsWhereUniqueInput[]
+  }
+
+  export type EnumUserRoleFieldUpdateOperationsInput = {
+    set?: $Enums.UserRole
   }
 
   export type password_reset_tokensUpdateManyWithoutUsersNestedInput = {
@@ -16451,6 +16532,23 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumUserRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
+  }
+
+  export type NestedEnumUserRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleWithAggregatesFilter<$PrismaModel> | $Enums.UserRole
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserRoleFilter<$PrismaModel>
+    _max?: NestedEnumUserRoleFilter<$PrismaModel>
+  }
+
   export type slotsCreateWithoutBookingsInput = {
     id: string
     date: Date | string
@@ -16539,6 +16637,7 @@ export namespace Prisma {
     pinCode?: string | null
     placeId?: string | null
     state?: string | null
+    role?: $Enums.UserRole
     sos_alerts?: sos_alertsCreateNestedManyWithoutUsersInput
     user_bookings?: user_bookingsCreateNestedManyWithoutUsersInput
   }
@@ -16563,6 +16662,7 @@ export namespace Prisma {
     pinCode?: string | null
     placeId?: string | null
     state?: string | null
+    role?: $Enums.UserRole
     sos_alerts?: sos_alertsUncheckedCreateNestedManyWithoutUsersInput
     user_bookings?: user_bookingsUncheckedCreateNestedManyWithoutUsersInput
   }
@@ -16603,6 +16703,7 @@ export namespace Prisma {
     pinCode?: NullableStringFieldUpdateOperationsInput | string | null
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     sos_alerts?: sos_alertsUpdateManyWithoutUsersNestedInput
     user_bookings?: user_bookingsUpdateManyWithoutUsersNestedInput
   }
@@ -16627,6 +16728,7 @@ export namespace Prisma {
     pinCode?: NullableStringFieldUpdateOperationsInput | string | null
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     sos_alerts?: sos_alertsUncheckedUpdateManyWithoutUsersNestedInput
     user_bookings?: user_bookingsUncheckedUpdateManyWithoutUsersNestedInput
   }
@@ -16783,6 +16885,7 @@ export namespace Prisma {
     pinCode?: string | null
     placeId?: string | null
     state?: string | null
+    role?: $Enums.UserRole
     password_reset_tokens?: password_reset_tokensCreateNestedManyWithoutUsersInput
     user_bookings?: user_bookingsCreateNestedManyWithoutUsersInput
   }
@@ -16807,6 +16910,7 @@ export namespace Prisma {
     pinCode?: string | null
     placeId?: string | null
     state?: string | null
+    role?: $Enums.UserRole
     password_reset_tokens?: password_reset_tokensUncheckedCreateNestedManyWithoutUsersInput
     user_bookings?: user_bookingsUncheckedCreateNestedManyWithoutUsersInput
   }
@@ -16847,6 +16951,7 @@ export namespace Prisma {
     pinCode?: NullableStringFieldUpdateOperationsInput | string | null
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password_reset_tokens?: password_reset_tokensUpdateManyWithoutUsersNestedInput
     user_bookings?: user_bookingsUpdateManyWithoutUsersNestedInput
   }
@@ -16871,6 +16976,7 @@ export namespace Prisma {
     pinCode?: NullableStringFieldUpdateOperationsInput | string | null
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password_reset_tokens?: password_reset_tokensUncheckedUpdateManyWithoutUsersNestedInput
     user_bookings?: user_bookingsUncheckedUpdateManyWithoutUsersNestedInput
   }
@@ -16926,6 +17032,7 @@ export namespace Prisma {
     pinCode?: string | null
     placeId?: string | null
     state?: string | null
+    role?: $Enums.UserRole
     password_reset_tokens?: password_reset_tokensCreateNestedManyWithoutUsersInput
     sos_alerts?: sos_alertsCreateNestedManyWithoutUsersInput
   }
@@ -16950,6 +17057,7 @@ export namespace Prisma {
     pinCode?: string | null
     placeId?: string | null
     state?: string | null
+    role?: $Enums.UserRole
     password_reset_tokens?: password_reset_tokensUncheckedCreateNestedManyWithoutUsersInput
     sos_alerts?: sos_alertsUncheckedCreateNestedManyWithoutUsersInput
   }
@@ -17027,6 +17135,7 @@ export namespace Prisma {
     pinCode?: NullableStringFieldUpdateOperationsInput | string | null
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password_reset_tokens?: password_reset_tokensUpdateManyWithoutUsersNestedInput
     sos_alerts?: sos_alertsUpdateManyWithoutUsersNestedInput
   }
@@ -17051,6 +17160,7 @@ export namespace Prisma {
     pinCode?: NullableStringFieldUpdateOperationsInput | string | null
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     password_reset_tokens?: password_reset_tokensUncheckedUpdateManyWithoutUsersNestedInput
     sos_alerts?: sos_alertsUncheckedUpdateManyWithoutUsersNestedInput
   }
