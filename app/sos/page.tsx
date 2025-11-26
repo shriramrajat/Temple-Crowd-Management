@@ -351,7 +351,26 @@ export default function SOSPage() {
       })
 
       if (!response.ok) {
-        throw new Error(`API error: ${response.status}`)
+        // Try to get error details from response
+        let errorMessage = `API error: ${response.status}`;
+        try {
+          const contentType = response.headers.get('content-type');
+          if (contentType && contentType.includes('application/json')) {
+            const errorData = await response.json();
+            errorMessage = errorData.error || errorData.message || errorMessage;
+          }
+        } catch (e) {
+          // If parsing fails, use default message
+        }
+        throw new Error(errorMessage);
+      }
+
+      // Check if response is JSON
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        const text = await response.text();
+        console.error('Non-JSON response from /api/sos:', text);
+        throw new Error('Server returned an invalid response. Please try again.');
       }
 
       const data = await response.json()

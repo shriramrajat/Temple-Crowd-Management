@@ -56,9 +56,13 @@ export async function createSOSAlert(
       };
     }
 
+    // Generate unique ID for SOS alert
+    const alertId = `sos_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`;
+
     // Create SOS alert record
-    const sosAlert = await db.sOSAlert.create({
+    const sosAlert = await db.sos_alerts.create({
       data: {
+        id: alertId,
         userId: input.userId || null,
         userName: input.userName || null,
         userPhone: input.userPhone || null,
@@ -69,6 +73,7 @@ export async function createSOSAlert(
         message: input.message || null,
         emergencyType: input.emergencyType,
         status: 'pending',
+        updatedAt: new Date(),
       },
     });
 
@@ -185,7 +190,7 @@ async function getAdminEmails(): Promise<string[]> {
     }
 
     // Fallback to querying admin users from database
-    const adminUsers = await db.adminUser.findMany({
+    const adminUsers = await db.admin_users.findMany({
       select: {
         email: true,
       },
@@ -205,7 +210,7 @@ async function getAdminEmails(): Promise<string[]> {
  */
 export async function getSOSAlertById(alertId: string) {
   try {
-    return await db.sOSAlert.findUnique({
+    return await db.sos_alerts.findUnique({
       where: { id: alertId },
       include: {
         user: {
@@ -237,7 +242,7 @@ export async function updateSOSAlertStatus(
   resolvedBy?: string
 ) {
   try {
-    return await db.sOSAlert.update({
+    return await db.sos_alerts.update({
       where: { id: alertId },
       data: {
         status,
@@ -257,7 +262,7 @@ export async function updateSOSAlertStatus(
  */
 export async function getPendingSOSAlerts() {
   try {
-    return await db.sOSAlert.findMany({
+    return await db.sos_alerts.findMany({
       where: {
         status: 'pending',
       },

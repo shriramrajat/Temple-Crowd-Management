@@ -19,6 +19,14 @@ export function DashboardContent() {
       try {
         const response = await fetch('/api/crowd-data')
         if (response.ok) {
+          const contentType = response.headers.get('content-type')
+          if (!contentType || !contentType.includes('application/json')) {
+            const text = await response.text()
+            console.error('Non-JSON response from /api/crowd-data:', text)
+            setLoading(false)
+            return
+          }
+          
           const data = await response.json()
           if (data.zones && data.zones.length > 0) {
             setCrowdLevel(data.overallLevel || 'medium')

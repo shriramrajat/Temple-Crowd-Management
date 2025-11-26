@@ -168,6 +168,15 @@ model users {
   placeId               String?                 @db.VarChar(255)
   state                 String?                 @db.VarChar(100)
   role                  UserRole                @default(PILGRIM)
+  // New profile fields
+  dateOfBirth           DateTime?               @db.Date
+  gender                String?                 @db.VarChar(20)
+  idProofType           String?                 @db.VarChar(50)
+  idProofNumber         String?                 @db.VarChar(50)
+  emergencyContactName  String?                 @db.VarChar(100)
+  emergencyContactPhone String?                 @db.VarChar(15)
+  accessibilityNeeds    String?                 @db.VarChar(500)
+  preferredLanguage     String?                 @default("English") @db.VarChar(50)
   password_reset_tokens password_reset_tokens[]
   sos_alerts            sos_alerts[]
   user_bookings         user_bookings[]

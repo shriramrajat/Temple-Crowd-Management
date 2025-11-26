@@ -11887,6 +11887,14 @@ export namespace Prisma {
     placeId: string | null
     state: string | null
     role: $Enums.UserRole | null
+    dateOfBirth: Date | null
+    gender: string | null
+    idProofType: string | null
+    idProofNumber: string | null
+    emergencyContactName: string | null
+    emergencyContactPhone: string | null
+    accessibilityNeeds: string | null
+    preferredLanguage: string | null
   }
 
   export type UsersMaxAggregateOutputType = {
@@ -11910,6 +11918,14 @@ export namespace Prisma {
     placeId: string | null
     state: string | null
     role: $Enums.UserRole | null
+    dateOfBirth: Date | null
+    gender: string | null
+    idProofType: string | null
+    idProofNumber: string | null
+    emergencyContactName: string | null
+    emergencyContactPhone: string | null
+    accessibilityNeeds: string | null
+    preferredLanguage: string | null
   }
 
   export type UsersCountAggregateOutputType = {
@@ -11933,6 +11949,14 @@ export namespace Prisma {
     placeId: number
     state: number
     role: number
+    dateOfBirth: number
+    gender: number
+    idProofType: number
+    idProofNumber: number
+    emergencyContactName: number
+    emergencyContactPhone: number
+    accessibilityNeeds: number
+    preferredLanguage: number
     _all: number
   }
 
@@ -11970,6 +11994,14 @@ export namespace Prisma {
     placeId?: true
     state?: true
     role?: true
+    dateOfBirth?: true
+    gender?: true
+    idProofType?: true
+    idProofNumber?: true
+    emergencyContactName?: true
+    emergencyContactPhone?: true
+    accessibilityNeeds?: true
+    preferredLanguage?: true
   }
 
   export type UsersMaxAggregateInputType = {
@@ -11993,6 +12025,14 @@ export namespace Prisma {
     placeId?: true
     state?: true
     role?: true
+    dateOfBirth?: true
+    gender?: true
+    idProofType?: true
+    idProofNumber?: true
+    emergencyContactName?: true
+    emergencyContactPhone?: true
+    accessibilityNeeds?: true
+    preferredLanguage?: true
   }
 
   export type UsersCountAggregateInputType = {
@@ -12016,6 +12056,14 @@ export namespace Prisma {
     placeId?: true
     state?: true
     role?: true
+    dateOfBirth?: true
+    gender?: true
+    idProofType?: true
+    idProofNumber?: true
+    emergencyContactName?: true
+    emergencyContactPhone?: true
+    accessibilityNeeds?: true
+    preferredLanguage?: true
     _all?: true
   }
 
@@ -12126,6 +12174,14 @@ export namespace Prisma {
     placeId: string | null
     state: string | null
     role: $Enums.UserRole
+    dateOfBirth: Date | null
+    gender: string | null
+    idProofType: string | null
+    idProofNumber: string | null
+    emergencyContactName: string | null
+    emergencyContactPhone: string | null
+    accessibilityNeeds: string | null
+    preferredLanguage: string | null
     _count: UsersCountAggregateOutputType | null
     _avg: UsersAvgAggregateOutputType | null
     _sum: UsersSumAggregateOutputType | null
@@ -12168,6 +12224,14 @@ export namespace Prisma {
     placeId?: boolean
     state?: boolean
     role?: boolean
+    dateOfBirth?: boolean
+    gender?: boolean
+    idProofType?: boolean
+    idProofNumber?: boolean
+    emergencyContactName?: boolean
+    emergencyContactPhone?: boolean
+    accessibilityNeeds?: boolean
+    preferredLanguage?: boolean
     password_reset_tokens?: boolean | users$password_reset_tokensArgs<ExtArgs>
     sos_alerts?: boolean | users$sos_alertsArgs<ExtArgs>
     user_bookings?: boolean | users$user_bookingsArgs<ExtArgs>
@@ -12195,6 +12259,14 @@ export namespace Prisma {
     placeId?: boolean
     state?: boolean
     role?: boolean
+    dateOfBirth?: boolean
+    gender?: boolean
+    idProofType?: boolean
+    idProofNumber?: boolean
+    emergencyContactName?: boolean
+    emergencyContactPhone?: boolean
+    accessibilityNeeds?: boolean
+    preferredLanguage?: boolean
   }, ExtArgs["result"]["users"]>
 
   export type usersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -12218,6 +12290,14 @@ export namespace Prisma {
     placeId?: boolean
     state?: boolean
     role?: boolean
+    dateOfBirth?: boolean
+    gender?: boolean
+    idProofType?: boolean
+    idProofNumber?: boolean
+    emergencyContactName?: boolean
+    emergencyContactPhone?: boolean
+    accessibilityNeeds?: boolean
+    preferredLanguage?: boolean
   }, ExtArgs["result"]["users"]>
 
   export type usersSelectScalar = {
@@ -12241,9 +12321,17 @@ export namespace Prisma {
     placeId?: boolean
     state?: boolean
     role?: boolean
+    dateOfBirth?: boolean
+    gender?: boolean
+    idProofType?: boolean
+    idProofNumber?: boolean
+    emergencyContactName?: boolean
+    emergencyContactPhone?: boolean
+    accessibilityNeeds?: boolean
+    preferredLanguage?: boolean
   }
 
-  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "passwordHash" | "name" | "phone" | "createdAt" | "updatedAt" | "lastLoginAt" | "failedLoginCount" | "lockedUntil" | "address" | "city" | "country" | "formattedAddress" | "latitude" | "longitude" | "pinCode" | "placeId" | "state" | "role", ExtArgs["result"]["users"]>
+  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "passwordHash" | "name" | "phone" | "createdAt" | "updatedAt" | "lastLoginAt" | "failedLoginCount" | "lockedUntil" | "address" | "city" | "country" | "formattedAddress" | "latitude" | "longitude" | "pinCode" | "placeId" | "state" | "role" | "dateOfBirth" | "gender" | "idProofType" | "idProofNumber" | "emergencyContactName" | "emergencyContactPhone" | "accessibilityNeeds" | "preferredLanguage", ExtArgs["result"]["users"]>
   export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     password_reset_tokens?: boolean | users$password_reset_tokensArgs<ExtArgs>
     sos_alerts?: boolean | users$sos_alertsArgs<ExtArgs>
@@ -12281,6 +12369,14 @@ export namespace Prisma {
       placeId: string | null
       state: string | null
       role: $Enums.UserRole
+      dateOfBirth: Date | null
+      gender: string | null
+      idProofType: string | null
+      idProofNumber: string | null
+      emergencyContactName: string | null
+      emergencyContactPhone: string | null
+      accessibilityNeeds: string | null
+      preferredLanguage: string | null
     }, ExtArgs["result"]["users"]>
     composites: {}
   }
@@ -12727,6 +12823,14 @@ export namespace Prisma {
     readonly placeId: FieldRef<"users", 'String'>
     readonly state: FieldRef<"users", 'String'>
     readonly role: FieldRef<"users", 'UserRole'>
+    readonly dateOfBirth: FieldRef<"users", 'DateTime'>
+    readonly gender: FieldRef<"users", 'String'>
+    readonly idProofType: FieldRef<"users", 'String'>
+    readonly idProofNumber: FieldRef<"users", 'String'>
+    readonly emergencyContactName: FieldRef<"users", 'String'>
+    readonly emergencyContactPhone: FieldRef<"users", 'String'>
+    readonly accessibilityNeeds: FieldRef<"users", 'String'>
+    readonly preferredLanguage: FieldRef<"users", 'String'>
   }
     
 
@@ -13372,7 +13476,15 @@ export namespace Prisma {
     pinCode: 'pinCode',
     placeId: 'placeId',
     state: 'state',
-    role: 'role'
+    role: 'role',
+    dateOfBirth: 'dateOfBirth',
+    gender: 'gender',
+    idProofType: 'idProofType',
+    idProofNumber: 'idProofNumber',
+    emergencyContactName: 'emergencyContactName',
+    emergencyContactPhone: 'emergencyContactPhone',
+    accessibilityNeeds: 'accessibilityNeeds',
+    preferredLanguage: 'preferredLanguage'
   };
 
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
@@ -14185,6 +14297,14 @@ export namespace Prisma {
     placeId?: StringNullableFilter<"users"> | string | null
     state?: StringNullableFilter<"users"> | string | null
     role?: EnumUserRoleFilter<"users"> | $Enums.UserRole
+    dateOfBirth?: DateTimeNullableFilter<"users"> | Date | string | null
+    gender?: StringNullableFilter<"users"> | string | null
+    idProofType?: StringNullableFilter<"users"> | string | null
+    idProofNumber?: StringNullableFilter<"users"> | string | null
+    emergencyContactName?: StringNullableFilter<"users"> | string | null
+    emergencyContactPhone?: StringNullableFilter<"users"> | string | null
+    accessibilityNeeds?: StringNullableFilter<"users"> | string | null
+    preferredLanguage?: StringNullableFilter<"users"> | string | null
     password_reset_tokens?: Password_reset_tokensListRelationFilter
     sos_alerts?: Sos_alertsListRelationFilter
     user_bookings?: User_bookingsListRelationFilter
@@ -14211,6 +14331,14 @@ export namespace Prisma {
     placeId?: SortOrderInput | SortOrder
     state?: SortOrderInput | SortOrder
     role?: SortOrder
+    dateOfBirth?: SortOrderInput | SortOrder
+    gender?: SortOrderInput | SortOrder
+    idProofType?: SortOrderInput | SortOrder
+    idProofNumber?: SortOrderInput | SortOrder
+    emergencyContactName?: SortOrderInput | SortOrder
+    emergencyContactPhone?: SortOrderInput | SortOrder
+    accessibilityNeeds?: SortOrderInput | SortOrder
+    preferredLanguage?: SortOrderInput | SortOrder
     password_reset_tokens?: password_reset_tokensOrderByRelationAggregateInput
     sos_alerts?: sos_alertsOrderByRelationAggregateInput
     user_bookings?: user_bookingsOrderByRelationAggregateInput
@@ -14240,6 +14368,14 @@ export namespace Prisma {
     placeId?: StringNullableFilter<"users"> | string | null
     state?: StringNullableFilter<"users"> | string | null
     role?: EnumUserRoleFilter<"users"> | $Enums.UserRole
+    dateOfBirth?: DateTimeNullableFilter<"users"> | Date | string | null
+    gender?: StringNullableFilter<"users"> | string | null
+    idProofType?: StringNullableFilter<"users"> | string | null
+    idProofNumber?: StringNullableFilter<"users"> | string | null
+    emergencyContactName?: StringNullableFilter<"users"> | string | null
+    emergencyContactPhone?: StringNullableFilter<"users"> | string | null
+    accessibilityNeeds?: StringNullableFilter<"users"> | string | null
+    preferredLanguage?: StringNullableFilter<"users"> | string | null
     password_reset_tokens?: Password_reset_tokensListRelationFilter
     sos_alerts?: Sos_alertsListRelationFilter
     user_bookings?: User_bookingsListRelationFilter
@@ -14266,6 +14402,14 @@ export namespace Prisma {
     placeId?: SortOrderInput | SortOrder
     state?: SortOrderInput | SortOrder
     role?: SortOrder
+    dateOfBirth?: SortOrderInput | SortOrder
+    gender?: SortOrderInput | SortOrder
+    idProofType?: SortOrderInput | SortOrder
+    idProofNumber?: SortOrderInput | SortOrder
+    emergencyContactName?: SortOrderInput | SortOrder
+    emergencyContactPhone?: SortOrderInput | SortOrder
+    accessibilityNeeds?: SortOrderInput | SortOrder
+    preferredLanguage?: SortOrderInput | SortOrder
     _count?: usersCountOrderByAggregateInput
     _avg?: usersAvgOrderByAggregateInput
     _max?: usersMaxOrderByAggregateInput
@@ -14297,6 +14441,14 @@ export namespace Prisma {
     placeId?: StringNullableWithAggregatesFilter<"users"> | string | null
     state?: StringNullableWithAggregatesFilter<"users"> | string | null
     role?: EnumUserRoleWithAggregatesFilter<"users"> | $Enums.UserRole
+    dateOfBirth?: DateTimeNullableWithAggregatesFilter<"users"> | Date | string | null
+    gender?: StringNullableWithAggregatesFilter<"users"> | string | null
+    idProofType?: StringNullableWithAggregatesFilter<"users"> | string | null
+    idProofNumber?: StringNullableWithAggregatesFilter<"users"> | string | null
+    emergencyContactName?: StringNullableWithAggregatesFilter<"users"> | string | null
+    emergencyContactPhone?: StringNullableWithAggregatesFilter<"users"> | string | null
+    accessibilityNeeds?: StringNullableWithAggregatesFilter<"users"> | string | null
+    preferredLanguage?: StringNullableWithAggregatesFilter<"users"> | string | null
   }
 
   export type admin_usersCreateInput = {
@@ -15065,6 +15217,14 @@ export namespace Prisma {
     placeId?: string | null
     state?: string | null
     role?: $Enums.UserRole
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    idProofType?: string | null
+    idProofNumber?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    accessibilityNeeds?: string | null
+    preferredLanguage?: string | null
     password_reset_tokens?: password_reset_tokensCreateNestedManyWithoutUsersInput
     sos_alerts?: sos_alertsCreateNestedManyWithoutUsersInput
     user_bookings?: user_bookingsCreateNestedManyWithoutUsersInput
@@ -15091,6 +15251,14 @@ export namespace Prisma {
     placeId?: string | null
     state?: string | null
     role?: $Enums.UserRole
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    idProofType?: string | null
+    idProofNumber?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    accessibilityNeeds?: string | null
+    preferredLanguage?: string | null
     password_reset_tokens?: password_reset_tokensUncheckedCreateNestedManyWithoutUsersInput
     sos_alerts?: sos_alertsUncheckedCreateNestedManyWithoutUsersInput
     user_bookings?: user_bookingsUncheckedCreateNestedManyWithoutUsersInput
@@ -15117,6 +15285,14 @@ export namespace Prisma {
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofType?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    accessibilityNeeds?: NullableStringFieldUpdateOperationsInput | string | null
+    preferredLanguage?: NullableStringFieldUpdateOperationsInput | string | null
     password_reset_tokens?: password_reset_tokensUpdateManyWithoutUsersNestedInput
     sos_alerts?: sos_alertsUpdateManyWithoutUsersNestedInput
     user_bookings?: user_bookingsUpdateManyWithoutUsersNestedInput
@@ -15143,6 +15319,14 @@ export namespace Prisma {
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofType?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    accessibilityNeeds?: NullableStringFieldUpdateOperationsInput | string | null
+    preferredLanguage?: NullableStringFieldUpdateOperationsInput | string | null
     password_reset_tokens?: password_reset_tokensUncheckedUpdateManyWithoutUsersNestedInput
     sos_alerts?: sos_alertsUncheckedUpdateManyWithoutUsersNestedInput
     user_bookings?: user_bookingsUncheckedUpdateManyWithoutUsersNestedInput
@@ -15169,6 +15353,14 @@ export namespace Prisma {
     placeId?: string | null
     state?: string | null
     role?: $Enums.UserRole
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    idProofType?: string | null
+    idProofNumber?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    accessibilityNeeds?: string | null
+    preferredLanguage?: string | null
   }
 
   export type usersUpdateManyMutationInput = {
@@ -15192,6 +15384,14 @@ export namespace Prisma {
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofType?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    accessibilityNeeds?: NullableStringFieldUpdateOperationsInput | string | null
+    preferredLanguage?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type usersUncheckedUpdateManyInput = {
@@ -15215,6 +15415,14 @@ export namespace Prisma {
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofType?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    accessibilityNeeds?: NullableStringFieldUpdateOperationsInput | string | null
+    preferredLanguage?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -15915,6 +16123,14 @@ export namespace Prisma {
     placeId?: SortOrder
     state?: SortOrder
     role?: SortOrder
+    dateOfBirth?: SortOrder
+    gender?: SortOrder
+    idProofType?: SortOrder
+    idProofNumber?: SortOrder
+    emergencyContactName?: SortOrder
+    emergencyContactPhone?: SortOrder
+    accessibilityNeeds?: SortOrder
+    preferredLanguage?: SortOrder
   }
 
   export type usersAvgOrderByAggregateInput = {
@@ -15944,6 +16160,14 @@ export namespace Prisma {
     placeId?: SortOrder
     state?: SortOrder
     role?: SortOrder
+    dateOfBirth?: SortOrder
+    gender?: SortOrder
+    idProofType?: SortOrder
+    idProofNumber?: SortOrder
+    emergencyContactName?: SortOrder
+    emergencyContactPhone?: SortOrder
+    accessibilityNeeds?: SortOrder
+    preferredLanguage?: SortOrder
   }
 
   export type usersMinOrderByAggregateInput = {
@@ -15967,6 +16191,14 @@ export namespace Prisma {
     placeId?: SortOrder
     state?: SortOrder
     role?: SortOrder
+    dateOfBirth?: SortOrder
+    gender?: SortOrder
+    idProofType?: SortOrder
+    idProofNumber?: SortOrder
+    emergencyContactName?: SortOrder
+    emergencyContactPhone?: SortOrder
+    accessibilityNeeds?: SortOrder
+    preferredLanguage?: SortOrder
   }
 
   export type usersSumOrderByAggregateInput = {
@@ -16638,6 +16870,14 @@ export namespace Prisma {
     placeId?: string | null
     state?: string | null
     role?: $Enums.UserRole
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    idProofType?: string | null
+    idProofNumber?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    accessibilityNeeds?: string | null
+    preferredLanguage?: string | null
     sos_alerts?: sos_alertsCreateNestedManyWithoutUsersInput
     user_bookings?: user_bookingsCreateNestedManyWithoutUsersInput
   }
@@ -16663,6 +16903,14 @@ export namespace Prisma {
     placeId?: string | null
     state?: string | null
     role?: $Enums.UserRole
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    idProofType?: string | null
+    idProofNumber?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    accessibilityNeeds?: string | null
+    preferredLanguage?: string | null
     sos_alerts?: sos_alertsUncheckedCreateNestedManyWithoutUsersInput
     user_bookings?: user_bookingsUncheckedCreateNestedManyWithoutUsersInput
   }
@@ -16704,6 +16952,14 @@ export namespace Prisma {
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofType?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    accessibilityNeeds?: NullableStringFieldUpdateOperationsInput | string | null
+    preferredLanguage?: NullableStringFieldUpdateOperationsInput | string | null
     sos_alerts?: sos_alertsUpdateManyWithoutUsersNestedInput
     user_bookings?: user_bookingsUpdateManyWithoutUsersNestedInput
   }
@@ -16729,6 +16985,14 @@ export namespace Prisma {
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofType?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    accessibilityNeeds?: NullableStringFieldUpdateOperationsInput | string | null
+    preferredLanguage?: NullableStringFieldUpdateOperationsInput | string | null
     sos_alerts?: sos_alertsUncheckedUpdateManyWithoutUsersNestedInput
     user_bookings?: user_bookingsUncheckedUpdateManyWithoutUsersNestedInput
   }
@@ -16886,6 +17150,14 @@ export namespace Prisma {
     placeId?: string | null
     state?: string | null
     role?: $Enums.UserRole
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    idProofType?: string | null
+    idProofNumber?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    accessibilityNeeds?: string | null
+    preferredLanguage?: string | null
     password_reset_tokens?: password_reset_tokensCreateNestedManyWithoutUsersInput
     user_bookings?: user_bookingsCreateNestedManyWithoutUsersInput
   }
@@ -16911,6 +17183,14 @@ export namespace Prisma {
     placeId?: string | null
     state?: string | null
     role?: $Enums.UserRole
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    idProofType?: string | null
+    idProofNumber?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    accessibilityNeeds?: string | null
+    preferredLanguage?: string | null
     password_reset_tokens?: password_reset_tokensUncheckedCreateNestedManyWithoutUsersInput
     user_bookings?: user_bookingsUncheckedCreateNestedManyWithoutUsersInput
   }
@@ -16952,6 +17232,14 @@ export namespace Prisma {
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofType?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    accessibilityNeeds?: NullableStringFieldUpdateOperationsInput | string | null
+    preferredLanguage?: NullableStringFieldUpdateOperationsInput | string | null
     password_reset_tokens?: password_reset_tokensUpdateManyWithoutUsersNestedInput
     user_bookings?: user_bookingsUpdateManyWithoutUsersNestedInput
   }
@@ -16977,6 +17265,14 @@ export namespace Prisma {
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofType?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    accessibilityNeeds?: NullableStringFieldUpdateOperationsInput | string | null
+    preferredLanguage?: NullableStringFieldUpdateOperationsInput | string | null
     password_reset_tokens?: password_reset_tokensUncheckedUpdateManyWithoutUsersNestedInput
     user_bookings?: user_bookingsUncheckedUpdateManyWithoutUsersNestedInput
   }
@@ -17033,6 +17329,14 @@ export namespace Prisma {
     placeId?: string | null
     state?: string | null
     role?: $Enums.UserRole
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    idProofType?: string | null
+    idProofNumber?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    accessibilityNeeds?: string | null
+    preferredLanguage?: string | null
     password_reset_tokens?: password_reset_tokensCreateNestedManyWithoutUsersInput
     sos_alerts?: sos_alertsCreateNestedManyWithoutUsersInput
   }
@@ -17058,6 +17362,14 @@ export namespace Prisma {
     placeId?: string | null
     state?: string | null
     role?: $Enums.UserRole
+    dateOfBirth?: Date | string | null
+    gender?: string | null
+    idProofType?: string | null
+    idProofNumber?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    accessibilityNeeds?: string | null
+    preferredLanguage?: string | null
     password_reset_tokens?: password_reset_tokensUncheckedCreateNestedManyWithoutUsersInput
     sos_alerts?: sos_alertsUncheckedCreateNestedManyWithoutUsersInput
   }
@@ -17136,6 +17448,14 @@ export namespace Prisma {
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofType?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    accessibilityNeeds?: NullableStringFieldUpdateOperationsInput | string | null
+    preferredLanguage?: NullableStringFieldUpdateOperationsInput | string | null
     password_reset_tokens?: password_reset_tokensUpdateManyWithoutUsersNestedInput
     sos_alerts?: sos_alertsUpdateManyWithoutUsersNestedInput
   }
@@ -17161,6 +17481,14 @@ export namespace Prisma {
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
     state?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofType?: NullableStringFieldUpdateOperationsInput | string | null
+    idProofNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    accessibilityNeeds?: NullableStringFieldUpdateOperationsInput | string | null
+    preferredLanguage?: NullableStringFieldUpdateOperationsInput | string | null
     password_reset_tokens?: password_reset_tokensUncheckedUpdateManyWithoutUsersNestedInput
     sos_alerts?: sos_alertsUncheckedUpdateManyWithoutUsersNestedInput
   }

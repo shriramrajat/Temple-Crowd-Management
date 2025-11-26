@@ -1,0 +1,9 @@
+-- Add new profile fields to users table
+ALTER TABLE users ADD COLUMN IF NOT EXISTS "dateOfBirth" DATE;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS "gender" VARCHAR(20);
+ALTER TABLE users ADD COLUMN IF NOT EXISTS "idProofType" VARCHAR(50);
+ALTER TABLE users ADD COLUMN IF NOT EXISTS "idProofNumber" VARCHAR(50);
+ALTER TABLE users ADD COLUMN IF NOT EXISTS "emergencyContactName" VARCHAR(100);
+ALTER TABLE users ADD COLUMN IF NOT EXISTS "emergencyContactPhone" VARCHAR(15);
+ALTER TABLE users ADD COLUMN IF NOT EXISTS "accessibilityNeeds" VARCHAR(500);
+ALTER TABLE users ADD COLUMN IF NOT EXISTS "preferredLanguage" VARCHAR(50) DEFAULT 'English';
