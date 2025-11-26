@@ -20,10 +20,11 @@ const RETRY_DELAY_MS = 1000;
  * Provides methods for sending email notifications with retry logic
  */
 export class NotificationService {
-  private resend: Resend;
+  private resend: Resend | null;
 
   constructor() {
-    this.resend = new Resend(RESEND_API_KEY);
+    // Only initialize Resend if API key is available
+    this.resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null;
   }
 
   /**
@@ -43,6 +44,12 @@ export class NotificationService {
     booking: BookingData,
     qrCodeDataUrl: string
   ): Promise<boolean> {
+    // Skip if Resend is not configured
+    if (!this.resend) {
+      console.warn("Resend API key not configured. Skipping email.");
+      return false;
+    }
+    
     try {
       // Format date and time for display
       const bookingDate = new Date(booking.slot.date).toLocaleDateString("en-IN", {
@@ -91,6 +98,12 @@ export class NotificationService {
    * @returns Success status
    */
   async sendCancellationEmail(booking: BookingData): Promise<boolean> {
+    // Skip if Resend is not configured
+    if (!this.resend) {
+      console.warn("Resend API key not configured. Skipping email.");
+      return false;
+    }
+    
     try {
       // Format date and time for display
       const bookingDate = new Date(booking.slot.date).toLocaleDateString("en-IN", {
@@ -137,6 +150,10 @@ export class NotificationService {
     subject: string;
     html: string;
   }): Promise<boolean> {
+    if (!this.resend) {
+      return false;
+    }
+    
     let lastError: Error | null = null;
 
     for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {

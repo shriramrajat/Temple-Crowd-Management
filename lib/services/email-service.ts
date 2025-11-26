@@ -5,8 +5,8 @@ import { Resend } from 'resend';
  * Handles sending emails using Resend API for authentication flows
  */
 
-// Initialize Resend client
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend client only if API key is available
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 // Email configuration
 const EMAIL_FROM = process.env.EMAIL_FROM || 'onboarding@resend.dev';
@@ -197,6 +197,11 @@ export async function sendVerificationEmail(
   email: string,
   token: string
 ): Promise<SendEmailResult> {
+  if (!resend) {
+    console.warn('Resend API key not configured. Skipping verification email.');
+    return { success: false, error: 'Email service not configured' };
+  }
+  
   try {
     const verificationUrl = `${APP_URL}/verify-email?token=${token}`;
     const htmlContent = generateVerificationEmailContent(verificationUrl);
@@ -240,6 +245,11 @@ export async function sendPasswordResetEmail(
   email: string,
   token: string
 ): Promise<SendEmailResult> {
+  if (!resend) {
+    console.warn('Resend API key not configured. Skipping password reset email.');
+    return { success: false, error: 'Email service not configured' };
+  }
+  
   try {
     const resetUrl = `${APP_URL}/reset-password?token=${token}`;
     const htmlContent = generatePasswordResetEmailContent(resetUrl);
@@ -283,6 +293,11 @@ export async function sendWelcomeEmail(
   email: string,
   name: string
 ): Promise<SendEmailResult> {
+  if (!resend) {
+    console.warn('Resend API key not configured. Skipping welcome email.');
+    return { success: false, error: 'Email service not configured' };
+  }
+  
   try {
     const htmlContent = generateWelcomeEmailContent(name);
     const emailHtml = generateEmailTemplate(htmlContent, 'Welcome!');
