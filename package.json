@@ -18,7 +18,8 @@
     "test:deployment": "node scripts/test-deployment.js",
     "check:system": "node scripts/system-check.js",
     "analyze:bundle": "node scripts/analyze-bundle.js",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "vercel-build": "next build"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
